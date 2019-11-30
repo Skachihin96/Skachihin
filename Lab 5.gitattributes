@@ -6,14 +6,14 @@ import java.util.*;
 public class text {
     public static void main(String[] args){
         try{
-            FileInputStream FIS = new FileInputStream("C:\\Война и мир.txt");
+            FileInputStream FIS = new FileInputStream("C:\\Book.txt");
             BufferedReader BR = new BufferedReader(new InputStreamReader(FIS, "Cp1251"));
             String str;
             String aa[];
             Map<String, Integer> wordToCount = new HashMap<>();
             str = BR.readLine();
             while( str != null){
-                str = str.replaceAll("[^а-яА-Яa-zA-Z\\s]", "");
+                str = str.replaceAll("[^Г -ГїГЂ-Гџa-zA-Z\\s]", "");
                 aa = str.split(" ");
                 for (int i = 0; i < aa.length; i++) {
                     for (String word : aa)
