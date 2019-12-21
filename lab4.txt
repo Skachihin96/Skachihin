@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+
+public class Test {
+    public static void main(String args[]) {
+        ArrayList<Integer> randInt = new ArrayList<Integer>();
+        for (int i = 0; i <= 100; i++){
+            randInt.add(randNum()); }
+        fifo(randInt); }
+        static int randNum(){
+        int num = (int)(Math.random()*10);
+        return num; }
+        static void fifo(ArrayList<Integer> fifoList){
+        ArrayList<Integer> window = new ArrayList<Integer>();
+        ArrayList<Integer> sorted;
+        float mediane;
+        for (int numoffifo : fifoList) {
+            if(window.size() >= 8){
+                window.remove(0); }
+            window.add(numoffifo);
+            sorted = (ArrayList<Integer>)window.clone();
+            if(window.size() == 8){
+                sorted = sort(sorted);
+                mediane = (float)(sorted.get(3)+sorted.get(4))/2;
+                System.out.println(window + " -> " + sorted + " -> [" + mediane + "]"); }
+        }
+    }
+    public static ArrayList<Integer> sort(ArrayList<Integer> unsortedList){
+        ArrayList<Integer> sortedList = unsortedList;
+        for(int out = sortedList.size() - 1; out >= 1; out--){
+            for(int in = 0; in < out; in++){
+                if(sortedList.get(in) > sortedList.get(in+1)){
+                    int var = sortedList.get(in);
+                    sortedList.set(in, sortedList.get(in+1));
+                    sortedList.set(in+1, var); }
+            }
+        }
+        return sortedList; }
+}
